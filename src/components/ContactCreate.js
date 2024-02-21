@@ -1,7 +1,7 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/ContactCreate.css'
-
+import { ServerUrl, isProduction } from '../Url.js';
 
 
 const ContactCreate = (props) => {
@@ -13,22 +13,22 @@ const ContactCreate = (props) => {
         const companyEditable = document.querySelector('.company_editable');
         const roleEditable = document.querySelector('.role_editable');
 
-        if(!nameEditable.value)  nameEditable.classList.add('error');
-        if(!emailEditable.value) emailEditable.classList.add('error');
-        if(!mobileEditable.value ) mobileEditable.classList.add('error');
-        if(!companyEditable.value) companyEditable.classList.add('error');
-        if(!roleEditable.value) roleEditable.classList.add('error');
-    
+        if (!nameEditable.value) nameEditable.classList.add('error');
+        if (!emailEditable.value) emailEditable.classList.add('error');
+        if (!mobileEditable.value) mobileEditable.classList.add('error');
+        if (!companyEditable.value) companyEditable.classList.add('error');
+        if (!roleEditable.value) roleEditable.classList.add('error');
+
         if (!nameEditable.value || !emailEditable.value || !mobileEditable.value || !companyEditable.value || !roleEditable.value) {
             return false
         }
-        
+
         return true;
     }
 
     const createContact = async () => {
         try {
-            if (!validateInputs()){
+            if (!validateInputs()) {
                 console.log('input validaton failed')
                 return
             }
@@ -42,7 +42,7 @@ const ContactCreate = (props) => {
 
             };
             const response = await axios.put('/contact', updatedContact);
-            window.location.href = '/contacts'
+            window.location.href = (isProduction ? ServerUrl : '') + '/contacts'
         } catch (error) {
             console.error('Error updating contact:', error);
         }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import '../components/Profile.css';
-import axios from '../api.js'; 
+import axios from '../api.js';
+import { ServerUrl, isProduction } from '../Url.js';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -38,7 +39,7 @@ const Profile = () => {
             const response = await axios.delete('/profile/delete');
             console.log("test2")
             console.log('Profile deleted successfully:', response.data);
-            window.location.href = '/login';
+            window.location.href = (isProduction ? ServerUrl : '') + '/login';
             setUser(null);
 
         } catch (error) {
@@ -53,16 +54,16 @@ const Profile = () => {
             <div className="user_details">
                 <div className="name_details">
                     <div className="label">Name</div>
-                    <div contentEditable='true' className="name_editable">{ user ? user.name : 'no name'}</div>
-                </div> 
+                    <div contentEditable='true' className="name_editable">{user ? user.name : 'no name'}</div>
+                </div>
 
                 <div className="email_details">
                     <div className="label">Email</div>
-                    <div contentEditable='true' className="email_editable">{ user ? user.email : 'no email'}</div>
+                    <div contentEditable='true' className="email_editable">{user ? user.email : 'no email'}</div>
                 </div>
             </div>
 
-            <br/><br/>
+            <br /><br />
 
             <div className="profile-btns" >
                 <button className="edit-btn" onClick={updateProfile}>Edit</button>

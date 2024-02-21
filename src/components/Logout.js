@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from '../api.js';
 import { useEffect } from 'react';
+import { ServerUrl, isProduction } from '../Url.js';
 
 const Logout = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -12,14 +13,14 @@ const Logout = () => {
 
       setTimeout(() => {
         localStorage.removeItem('token');
-        window.location.href = '/login';
+        window.location.href = (isProduction ? ServerUrl : '') + '/login';
       }, 1000);
     } catch (error) {
       console.error('Error logging out:', error);
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-        window.location.href = '/login';
+        window.location.href = (isProduction ? ServerUrl : '') + '/login';
       }, 2000);
     }
   };

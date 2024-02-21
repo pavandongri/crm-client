@@ -1,6 +1,7 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/ContactDetails.css'
+import { ServerUrl, isProduction } from '../Url.js';
 
 import { useParams } from 'react-router-dom';
 
@@ -17,7 +18,6 @@ const ContactDetails = (props) => {
         try {
             const response = await axios.get(`/contact/${id}`);
             const data = response.data;
-            console.log(data)
             setContact(data);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -34,7 +34,7 @@ const ContactDetails = (props) => {
                 role: document.querySelector('.role_editable').textContent
             };
             console.log(updateContact)
-            await axios.put(`/contact/${id}`, updatedContact); 
+            await axios.put(`/contact/${id}`, updatedContact);
             setContact(updatedContact);
         } catch (error) {
             console.error('Error updating contact:', error);
@@ -45,7 +45,7 @@ const ContactDetails = (props) => {
         try {
             await axios.delete(`/contact/${id}`);
             console.log('Contact deleted successfully');
-            window.location.href = '/contacts';
+            window.location.href = (isProduction ? ServerUrl : '') + '/contacts';
         } catch (error) {
             console.error('Error deleting contact:', error);
         }
@@ -56,7 +56,7 @@ const ContactDetails = (props) => {
         <>
             <div className="container">
                 <h1 className="heading">Contact Details</h1>
-                <br/>
+                <br />
                 <div className="contact_details_container">
                     <div className="contact_name">
                         <div className="label">Name</div>

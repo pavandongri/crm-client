@@ -1,6 +1,7 @@
 import React from "react"
 import axios from "../api.js"
 import '../components/MeetingCreate.css'
+import { ServerUrl, isProduction } from '../Url.js';
 
 
 const MeetingCreate = () => {
@@ -19,7 +20,7 @@ const MeetingCreate = () => {
 
             };
             const response = await axios.put('/meeting/create', meeting);
-            window.location.href = '/meetings'
+            window.location.href = (isProduction ? ServerUrl : '') + '/meetings'
         } catch (error) {
             console.error('Error updating contact:', error);
         }

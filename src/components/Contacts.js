@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import '../components/Contacts.css'
 import axios from '../api.js';
 import { CiCirclePlus } from "react-icons/ci";
+import { ServerUrl, isProduction } from '../Url.js';
+
 
 const Contacts = () => {
     const [contacts, setContacts] = useState(null);
@@ -22,11 +24,11 @@ const Contacts = () => {
     };
 
     const handleRowClick = (contactId) => {
-        window.location.href = `/contact/${contactId}`;
+        window.location.href = (isProduction ? ServerUrl : '') + `/contact/${contactId}`;
     }
 
     const createNewContact = () => {
-        window.location.href = '/contact/new/create'
+        window.location.href = (isProduction ? ServerUrl : '') +'/contact/new/create'
     }
 
     return (

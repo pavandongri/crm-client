@@ -1,7 +1,7 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/MeetingDetails.css'
-
+import { ServerUrl, isProduction } from '../Url.js';
 import { useParams } from 'react-router-dom';
 
 
@@ -27,17 +27,17 @@ const MeetingDetails = (props) => {
     const updateMeeting = async () => {
         try {
             const updatedMeeting = {
-                title:  document.querySelector('.title-input').textContent,
-                date:  document.querySelector('.date-input').textContent,
-                time:  document.querySelector('.time-input').textContent,
-                location:  document.querySelector('.location-input').textContent,
-                status:  document.querySelector('.status-input').textContent,
-                priority:  document.querySelector('.priority-input').textContent,
-                duration:  document.querySelector('.duration-input').textContent,
-                organizer:  document.querySelector('.organizer-input').textContent
+                title: document.querySelector('.title-input').textContent,
+                date: document.querySelector('.date-input').textContent,
+                time: document.querySelector('.time-input').textContent,
+                location: document.querySelector('.location-input').textContent,
+                status: document.querySelector('.status-input').textContent,
+                priority: document.querySelector('.priority-input').textContent,
+                duration: document.querySelector('.duration-input').textContent,
+                organizer: document.querySelector('.organizer-input').textContent
 
             };
-            await axios.put(`/meeting/${id}`, updatedMeeting); 
+            await axios.put(`/meeting/${id}`, updatedMeeting);
             setMeeting(updatedMeeting);
         } catch (error) {
             console.error('Error updating meeting:', error);
@@ -47,7 +47,7 @@ const MeetingDetails = (props) => {
     const deleteMeeting = async () => {
         try {
             await axios.delete(`/meeting/${id}`);
-            window.location.href = '/meetings';
+            window.location.href = (isProduction ? ServerUrl : '') + '/meetings';
         } catch (error) {
             console.error('Error deleting meeting:', error);
         }
@@ -58,7 +58,7 @@ const MeetingDetails = (props) => {
         <>
             <div className="container">
                 <h1 className="heading">Meeting Details</h1>
-                <br/>
+                <br />
                 <div className="meeting_container">
                     <div className="meeting_title">
                         <div className="label">Title</div>

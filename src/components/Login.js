@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/Login.css'
+import { ServerUrl, isProduction } from '../Url.js';
 
 const Login = () => {
 
@@ -33,7 +34,8 @@ const Login = () => {
       if (response.ok) {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
-        window.location.href = '/home'
+        console.log("isProduction : ", isProduction)
+        window.location.href = (isProduction ? ServerUrl : '') + '/home'
       } else {
         console.error("Registration failed:", response.statusText);
       }

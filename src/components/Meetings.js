@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import '../components/Meetings.css'
 import axios from '../api.js';
 import { CiCirclePlus } from "react-icons/ci";
+import { ServerUrl, isProduction } from '../Url.js';
 
 
 const Meetings = () => {
@@ -24,12 +25,12 @@ const Meetings = () => {
     };
 
     const handleRowClick = (meetingId) => {
-        window.location.href = `/meeting/${meetingId}`;
+        window.location.href = (isProduction ? ServerUrl : '') + `/meeting/${meetingId}`;
     }
 
 
     const createNewMeetings = () => {
-        window.location.href = "/meeting/create"
+        window.location.href = (isProduction ? ServerUrl : '') + "/meeting/create"
     }
 
     return (
