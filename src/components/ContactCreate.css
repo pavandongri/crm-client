@@ -1,0 +1,47 @@
+.editable, .name_editable, .email_editable{
+   height: 2.5em;
+   margin-bottom: 1em;
+   border-radius: 1em
+}
+
+.contact_container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    padding-left: 25%;
+}
+
+.profile-btns{
+    height: 3em !important;
+}
+
+input.error {
+    border: 1px solid red; 
+}
+
+
+.edit-btnn{
+    margin: auto;
+    width: 40% !important;
+    height: 100%;
+    background-color: green;
+    font-weight: bolder;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    font-size: 80%;
+    border-radius: 1em
+}
+
+@media screen and (max-width: 750px){
+    .edit-btn{
+        font-size: 3vw;
+    }
+    
+    .heading{
+        font-size: 4vw !important;
+    }
+
+    .contact_container{
+        font-size: 2vw
+    }
+}

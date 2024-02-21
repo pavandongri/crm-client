@@ -1,0 +1,54 @@
+.container{
+  height: 60%;
+  width: 60%;
+  margin: 8% 20%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 2% 4%;
+  background-color: #dddfee;
+}
+
+.heading{
+  color: #535C91;
+  font-size: 4rem;
+  text-align: center;
+  font-weight: bolder;
+  font-family: monospace;
+  border-bottom: 1px solid black;
+  margin-bottom: 2%;
+}
+
+
+#email, #password{
+  width: 50%;
+  background-color: #dddfee;
+}
+
+
+#sign-in-btn{
+  color: black;
+  width: 50%;
+  color: white;
+  font-weight: bold;
+  background-color: #535C91;
+}
+
+.register a{
+  color: #535C91;
+  font-weight: bold;
+}
+
+.register a:hover{
+  color: #afb7e9
+}
+
+#sign-in-btn:hover{
+  background-color: #afb7e9;
+  color: black
+}
+
+
+@media screen and (max-width: 750px) {
+  .heading{
+    font-size: 2.5rem;
+  }
+}

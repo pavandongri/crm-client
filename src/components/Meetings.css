@@ -1,0 +1,26 @@
+.heading {
+    font-size: 4em;
+    font-weight: bolder;
+}
+
+.contacts-list p{
+    font-size: 2em;
+}
+
+table{
+    font-size: 1vw;
+}
+
+@media screen and (max-width: 750px) {
+    .heading {
+        font-size: 10vw;
+    }
+
+    .contacts-list p{
+        font-size: 4vw;
+    }
+
+    table{
+        font-size: 1vw;
+    }
+}

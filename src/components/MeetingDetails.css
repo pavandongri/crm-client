@@ -1,0 +1,21 @@
+.meeting_container > div {
+    display: flex;
+    height: 2.5em;
+    margin-bottom: 1.5em;
+    border-radius: 5%;
+    line-height: 2.5em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.meeting_container .label{
+    width: 30%;
+    text-align: center;
+}
+
+
+.editable{
+    width: 70%;
+    text-align: center;
+    justify-self: center;
+    font-weight: bolder;
+}

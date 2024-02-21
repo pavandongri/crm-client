@@ -1,0 +1,73 @@
+.heading {
+    font-size: 4em;
+    font-weight: bolder;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.contacts-list p{
+    font-size: 2em;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th{
+    background-color: #f3c989 !important;
+  }
+  
+  th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #c1c5d8;
+    cursor: pointer;
+  }
+  
+
+#plus{
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+}
+
+#plus:hover{
+  transform: scale(1.2);
+}
+
+table{
+  font-size: 1vw;
+}
+
+@media screen and (max-width: 750px) {
+  .heading {
+      font-size: 10vw;
+  }
+
+  .contacts-list p{
+      font-size: 4vw;
+  }
+
+  table{
+    font-size: 1.4vw;
+  }
+}
+
+
+
