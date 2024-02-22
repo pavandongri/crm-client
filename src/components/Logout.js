@@ -10,18 +10,18 @@ const Logout = () => {
     try {
       setIsLoading(true);
       await axios.delete('/logout');
-
-      setTimeout(() => {
-        localStorage.removeItem('token');
-        window.location.href = '/login';
-      }, 1000);
+      // setTimeout(() => {
+      //   localStorage.removeItem('token');
+      //   window.location.href = '/login';
+      // }, 1000);
     } catch (error) {
       console.error('Error logging out:', error);
     } finally {
       setTimeout(() => {
         setIsLoading(false);
+        localStorage.removeItem('token');
         window.location.href = '/login';
-      }, 2000);
+      }, 1000);
     }
   };
 
