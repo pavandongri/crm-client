@@ -13,7 +13,6 @@ const Profile = () => {
         try {
             const response = await axios.get('/profile');
             const data = response.data;
-            console.log('data = ', data);
             setUser(data);
         } catch (error) {
             console.error('Error fetching data:', error);

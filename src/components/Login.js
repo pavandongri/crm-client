@@ -3,7 +3,6 @@ import '../components/Login.css'
 import axios from '../api.js';
 
 const Login = () => {
-  console.log(process.env)
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -29,7 +28,6 @@ const Login = () => {
       if (response.data.status.code == 200) {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
-        console.log('loged in nnnnn')
         window.location.href = '/home'
       } else {
         console.error("Login failed:", 401);
