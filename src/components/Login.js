@@ -21,8 +21,10 @@ const Login = () => {
       }
     }
     console.log(data, "in login", isProduction)
+    console.log("NODE_ENV:", process.env);
 
     const url = (isProduction ? ServerUrl : 'http://localhost:3001') + '/login'
+    
 
     try {
       const response = await fetch(url, {
