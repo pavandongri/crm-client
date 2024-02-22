@@ -1,6 +1,5 @@
 import React from 'react';
 import '../components/Registration.css'
-import { ServerUrl, isProduction } from '../Url.js';
 
 
 const Registration = () => {
@@ -37,7 +36,7 @@ const Registration = () => {
       console.log(response)
 
       if (response.ok) {
-        window.location.href = (isProduction ? ServerUrl : '') + "/home";
+        window.location.href = "/home";
       } else {
         console.error("Registration failed:", response.statusText);
       }

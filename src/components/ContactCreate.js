@@ -1,8 +1,6 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/ContactCreate.css'
-import { ServerUrl, isProduction } from '../Url.js';
-
 
 const ContactCreate = (props) => {
 
@@ -42,7 +40,7 @@ const ContactCreate = (props) => {
 
             };
             const response = await axios.put('/contact', updatedContact);
-            window.location.href = (isProduction ? ServerUrl : '') + '/contacts'
+            window.location.href = '/contacts'
         } catch (error) {
             console.error('Error updating contact:', error);
         }

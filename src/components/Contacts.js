@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import '../components/Contacts.css'
 import axios from '../api.js';
 import { CiCirclePlus } from "react-icons/ci";
-import { ServerUrl, isProduction } from '../Url.js';
 
 
 const Contacts = () => {
@@ -24,17 +23,17 @@ const Contacts = () => {
     };
 
     const handleRowClick = (contactId) => {
-        window.location.href = (isProduction ? ServerUrl : '') + `/contact/${contactId}`;
+        window.location.href = `/contact/${contactId}`;
     }
 
     const createNewContact = () => {
-        window.location.href = (isProduction ? ServerUrl : '') +'/contact/new/create'
+        window.location.href = '/contact/new/create'
     }
 
     return (
         <div className="container">
-            <h1 className="heading">Contacts <CiCirclePlus id='plus' onClick={createNewContact} title="Create new contact"  /></h1>
-            
+            <h1 className="heading">Contacts <CiCirclePlus id='plus' onClick={createNewContact} title="Create new contact" /></h1>
+
             <div className="contacts-list">
                 <table>
                     <thead>

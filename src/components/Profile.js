@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../components/Profile.css';
 import axios from '../api.js';
-import { ServerUrl, isProduction } from '../Url.js';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -39,7 +38,7 @@ const Profile = () => {
             const response = await axios.delete('/profile/delete');
             console.log("test2")
             console.log('Profile deleted successfully:', response.data);
-            window.location.href = (isProduction ? ServerUrl : '') + '/login';
+            window.location.href = '/login';
             setUser(null);
 
         } catch (error) {

@@ -1,7 +1,6 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/ContactDetails.css'
-import { ServerUrl, isProduction } from '../Url.js';
 
 import { useParams } from 'react-router-dom';
 
@@ -45,7 +44,7 @@ const ContactDetails = (props) => {
         try {
             await axios.delete(`/contact/${id}`);
             console.log('Contact deleted successfully');
-            window.location.href = (isProduction ? ServerUrl : '') + '/contacts';
+            window.location.href = '/contacts';
         } catch (error) {
             console.error('Error deleting contact:', error);
         }

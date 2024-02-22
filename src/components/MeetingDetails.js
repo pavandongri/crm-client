@@ -1,7 +1,6 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/MeetingDetails.css'
-import { ServerUrl, isProduction } from '../Url.js';
 import { useParams } from 'react-router-dom';
 
 
@@ -47,7 +46,7 @@ const MeetingDetails = (props) => {
     const deleteMeeting = async () => {
         try {
             await axios.delete(`/meeting/${id}`);
-            window.location.href = (isProduction ? ServerUrl : '') + '/meetings';
+            window.location.href = '/meetings';
         } catch (error) {
             console.error('Error deleting meeting:', error);
         }
