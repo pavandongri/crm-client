@@ -19,7 +19,7 @@ const Login = () => {
       }
     }
 
-    const url = "http://localhost:3001/login";
+    const url = (isProduction ? ServerUrl : 'http://localhost:3001') + '/login'
 
     try {
       const response = await fetch(url, {
