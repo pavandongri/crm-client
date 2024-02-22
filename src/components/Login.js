@@ -4,14 +4,33 @@ import axios from '../api.js';
 
 const Login = () => {
 
+  const tokenExpired = (token) => {
+    if (!token) return true;
+
+    const tokenParts = token.split('.');
+
+    const decodedPayload = atob(tokenParts[1]);
+
+    const tokenData = JSON.parse(decodedPayload);
+
+    if (!tokenData || !tokenData.exp) return true;
+
+    const currentTime = Math.floor(Date.now() / 1000);
+
+    return tokenData.exp < currentTime;
+  }
+
+  
   const storedToken = localStorage.getItem('token')
 
-  if (storedToken) {
+  if (!tokenExpired(storedToken)) {
     window.location.href = '/home'
   }
-  
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
 
     const formData = new FormData(event.target);
 
