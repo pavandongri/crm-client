@@ -4,6 +4,8 @@ import { ServerUrl, isProduction } from '../Url.js';
 
 const Login = () => {
 
+  console.log('inLogin start')
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -18,7 +20,8 @@ const Login = () => {
         password: password
       }
     }
-  
+    console.log(data, "in login", isProduction)
+
     const url = (isProduction ? ServerUrl : 'http://localhost:3001') + '/login'
 
     try {
