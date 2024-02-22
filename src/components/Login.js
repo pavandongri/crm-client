@@ -3,6 +3,13 @@ import '../components/Login.css'
 import axios from '../api.js';
 
 const Login = () => {
+
+  const storedToken = localStorage.getItem('token')
+
+  if (storedToken) {
+    window.location.href = '/home'
+  }
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
