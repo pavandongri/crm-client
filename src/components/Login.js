@@ -18,7 +18,7 @@ const Login = () => {
         password: password
       }
     }
-
+  
     const url = (isProduction ? ServerUrl : 'http://localhost:3001') + '/login'
 
     try {
@@ -37,10 +37,10 @@ const Login = () => {
         console.log("isProduction : ", isProduction)
         window.location.href = (isProduction ? ServerUrl : '') + '/home'
       } else {
-        console.error("Registration failed:", response.statusText);
+        console.error("Login failed:", response.statusText);
       }
     } catch (error) {
-      console.error("Error during registration:", error);
+      console.error("Error during Login:", error);
     }
   };
 
