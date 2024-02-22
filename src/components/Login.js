@@ -40,7 +40,7 @@ const Login = () => {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
         console.log("isProduction : ", isProduction)
-        window.location.href = (isProduction ? ServerUrl : '') + '/home'
+        window.location.href = '/home'
       } else {
         console.error("Login failed:", response.statusText);
       }
