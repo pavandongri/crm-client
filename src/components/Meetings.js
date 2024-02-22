@@ -16,7 +16,6 @@ const Meetings = () => {
             const response = await axios.get('/meetings');
             const data = response.data;
             setMeetings(data);
-            console.log('meetings = ', data)
         } catch (error) {
             console.error('Error fetching data:', error);
         }

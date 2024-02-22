@@ -21,8 +21,6 @@ const Registration = () => {
       }
     }
 
-    console.log(JSON.stringify(data))
-
     try {
       const response = await axios.post('/signup', JSON.stringify(data), {
         headers: {

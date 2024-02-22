@@ -61,7 +61,7 @@ const Profile = () => {
             <br /><br />
 
             <div className="profile-btns" >
-                <button className="edit-btn" onClick={updateProfile}>Edit</button>
+                <button className="edit-btn" onClick={updateProfile}>Update</button>
                 <button className="destroy-btn" onClick={deleteProfile}>Delete</button>
             </div>
         </div>
