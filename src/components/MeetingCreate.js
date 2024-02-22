@@ -2,7 +2,6 @@ import React from "react"
 import axios from "../api.js"
 import '../components/MeetingCreate.css'
 
-
 const MeetingCreate = () => {
 
     const createMeeting = async () => {

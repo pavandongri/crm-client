@@ -3,7 +3,6 @@ import axios from '../api.js'
 import '../components/MeetingDetails.css'
 import { useParams } from 'react-router-dom';
 
-
 const MeetingDetails = (props) => {
     const { id } = useParams();
     const [meeting, setMeeting] = useState(null)
@@ -16,7 +15,6 @@ const MeetingDetails = (props) => {
         try {
             const response = await axios.get(`/meeting/${id}`);
             const data = response.data;
-            console.log(data)
             setMeeting(data);
         } catch (error) {
             console.error('Error fetching data:', error);

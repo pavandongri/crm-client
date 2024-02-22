@@ -34,10 +34,7 @@ const Profile = () => {
 
     const deleteProfile = async () => {
         try {
-            console.log("test")
             const response = await axios.delete('/profile/delete');
-            console.log("test2")
-            console.log('Profile deleted successfully:', response.data);
             window.location.href = '/login';
             setUser(null);
 

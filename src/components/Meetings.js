@@ -4,7 +4,6 @@ import '../components/Meetings.css'
 import axios from '../api.js';
 import { CiCirclePlus } from "react-icons/ci";
 
-
 const Meetings = () => {
     const [meetings, setMeetings] = useState(null);
 

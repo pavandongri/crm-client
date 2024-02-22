@@ -1,7 +1,6 @@
 import React, { useDebugValue, useEffect, useState } from 'react'
 import axios from '../api.js'
 import '../components/ContactDetails.css'
-
 import { useParams } from 'react-router-dom';
 
 
@@ -32,7 +31,6 @@ const ContactDetails = (props) => {
                 company: document.querySelector('.company_editable').textContent,
                 role: document.querySelector('.role_editable').textContent
             };
-            console.log(updateContact)
             await axios.put(`/contact/${id}`, updatedContact);
             setContact(updatedContact);
         } catch (error) {
@@ -43,7 +41,6 @@ const ContactDetails = (props) => {
     const deleteContact = async () => {
         try {
             await axios.delete(`/contact/${id}`);
-            console.log('Contact deleted successfully');
             window.location.href = '/contacts';
         } catch (error) {
             console.error('Error deleting contact:', error);

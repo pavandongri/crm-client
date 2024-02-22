@@ -1,6 +1,6 @@
 import React from 'react';
 import '../components/Registration.css'
-
+import axios from '../api.js';
 
 const Registration = () => {
 
@@ -23,19 +23,14 @@ const Registration = () => {
 
     console.log(JSON.stringify(data))
 
-    const url = "http://localhost:3001/signup";
-
     try {
-      const response = await fetch(url, {
-        method: "POST",
+      const response = await axios.post('/signup', JSON.stringify(data), {
         headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+          'Content-Type': 'application/json'
+        }
       });
-      console.log(response)
 
-      if (response.ok) {
+      if (response.data.status.code == 200) {
         window.location.href = "/home";
       } else {
         console.error("Registration failed:", response.statusText);

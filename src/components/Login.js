@@ -1,11 +1,9 @@
 import React from 'react';
 import '../components/Login.css'
-import { ServerUrl, isProduction } from '../Url.js';
+import axios from '../api.js';
 
 const Login = () => {
-
-  console.log('inLogin start')
-
+  console.log(process.env)
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,29 +18,21 @@ const Login = () => {
         password: password
       }
     }
-    console.log(data, "in login", isProduction)
-    console.log("NODE_ENV:", process.env);
-
-    const url = (isProduction ? ServerUrl : 'http://localhost:3001') + '/login'
-    
 
     try {
-      const response = await fetch(url, {
-        method: "POST",
+      const response = await axios.post('/login', JSON.stringify(data), {
         headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
+          'Content-Type': 'application/json'
+        }
       });
 
-
-      if (response.ok) {
+      if (response.data.status.code == 200) {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
-        console.log("isProduction : ", isProduction)
+        console.log('loged in nnnnn')
         window.location.href = '/home'
       } else {
-        console.error("Login failed:", response.statusText);
+        console.error("Login failed:", 401);
       }
     } catch (error) {
       console.error("Error during Login:", error);

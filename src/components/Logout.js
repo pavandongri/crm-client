@@ -6,6 +6,7 @@ const Logout = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = async () => {
+
     try {
       setIsLoading(true);
       await axios.delete('/logout');
