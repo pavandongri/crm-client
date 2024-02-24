@@ -34,6 +34,7 @@ const Profile = () => {
     const deleteProfile = async () => {
         try {
             const response = await axios.delete('/profile/delete');
+            localStorage.removeItem('token')
             window.location.href = '/login';
             setUser(null);
 
