@@ -32,10 +32,10 @@ _________________________________________________________________
 
 _________________________________________________________________
 
-## Deployed on cloud for live testing
+# Deployed on cloud for live testing
 _________________________________________________________________
 
-## Frontend: 
+# Frontend: 
 
 used React.js to architecture frontend
 
@@ -45,7 +45,7 @@ live url: https://crm-client-sandy.vercel.app/
 
 _________________________________________________________________
 
-## Backend:
+# Backend:
 
 git repo url: https://github.com/pavandongri/crm-server
 
