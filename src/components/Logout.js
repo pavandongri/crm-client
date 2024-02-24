@@ -10,6 +10,7 @@ const Logout = () => {
     try {
       setIsLoading(true);
       await axios.delete('/logout');
+      localStorage.removeItem('token')
     } catch (error) {
       console.error('Error logging out:', error);
     } finally {
