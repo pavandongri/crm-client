@@ -43,14 +43,14 @@ const Login = () => {
         password: password
       }
     }
-
+    console.log('login data = ', data)
     try {
       const response = await axios.post('/login', JSON.stringify(data), {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-
+      console.log('login response =', response)
       if (response.data.status.code == 200) {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
