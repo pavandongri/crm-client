@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../components/Registration.css'
 import axios from '../api.js';
 
 const Registration = () => {
+  const [regError, setRegError] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setRegError(false)
 
     const formData = new FormData(event.target);
 
@@ -31,10 +33,10 @@ const Registration = () => {
       if (response.data.status.code == 200) {
         window.location.href = "/home";
       } else {
-        console.error("Registration failed:", response.statusText);
+        setRegError(true)
       }
     } catch (error) {
-      console.error("Error during registration:", error);
+      setRegError(true)
     }
   };
 
@@ -47,6 +49,7 @@ const Registration = () => {
       </div>
       <div className='form'>
         <form onSubmit={handleSubmit}>
+          <p className={regError ? 'reg-error-message' : 'display-none'}>Provide valid details..!!</p>
           <input type="text" id="name" name="name" required placeholder='Your Name' />
           <br /><br />
 

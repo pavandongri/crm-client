@@ -45,3 +45,8 @@ input.error {
         font-size: 2vw
     }
 }
+
+.contact-error{
+    color: red;
+    font-weight: bold;
+}

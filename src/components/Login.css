@@ -46,6 +46,14 @@
   color: black
 }
 
+.login-error{
+  color: red;
+  font-weight: bold;
+}
+
+.display-none{
+  display: none;
+}
 
 @media screen and (max-width: 750px) {
   .heading{

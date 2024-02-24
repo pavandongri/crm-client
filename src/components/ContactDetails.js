@@ -7,6 +7,9 @@ import { useParams } from 'react-router-dom';
 const ContactDetails = (props) => {
     const { id } = useParams();
     const [contact, setContact] = useState(null)
+    const [updateError, setUpdateError] = useState(false)
+    const [deleteError, setDeleteError] = useState(false)
+
 
     useEffect(() => {
         getContactDetails();
@@ -23,6 +26,7 @@ const ContactDetails = (props) => {
     }
 
     const updateContact = async () => {
+        setUpdateError(false)
         try {
             const updatedContact = {
                 name: document.querySelector('.name_editable').textContent,
@@ -34,15 +38,18 @@ const ContactDetails = (props) => {
             await axios.put(`/contact/${id}`, updatedContact);
             setContact(updatedContact);
         } catch (error) {
+            setUpdateError(true)
             console.error('Error updating contact:', error);
         }
     };
 
     const deleteContact = async () => {
+        setDeleteError(false)
         try {
             await axios.delete(`/contact/${id}`);
             window.location.href = '/contacts';
         } catch (error) {
+            setDeleteError(true)
             console.error('Error deleting contact:', error);
         }
     };
@@ -54,6 +61,8 @@ const ContactDetails = (props) => {
                 <h1 className="heading">Contact Details</h1>
                 <br />
                 <div className="contact_details_container">
+                    <p className={deleteError ? "contact-delete-message" : "display-none"}>Can't delete the user. to delete the user first delete all the contacts and meetings</p>
+                    <p className={updateError ? "contact-update-message" : "display-none"}>Can't update due to invalid details</p>
                     <div className="contact_name">
                         <div className="label">Name</div>
                         <div contentEditable='true' className="name_editable editable">{contact ? contact.name : 'nil'}</div>

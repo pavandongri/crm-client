@@ -3,6 +3,7 @@ import axios from '../api.js'
 import '../components/ContactCreate.css'
 
 const ContactCreate = (props) => {
+    const [inputError, setInputError] = useState(false)
 
     function validateInputs() {
         const nameEditable = document.querySelector('.name_editable');
@@ -25,6 +26,7 @@ const ContactCreate = (props) => {
     }
 
     const createContact = async () => {
+        setInputError(false)
         try {
             if (!validateInputs()) {
                 console.log('input validaton failed')
@@ -42,9 +44,11 @@ const ContactCreate = (props) => {
             const response = await axios.put('/contact', updatedContact);
             window.location.href = '/contacts'
         } catch (error) {
+            setInputError(true)
             console.error('Error updating contact:', error);
         }
     };
+
 
     return (
         <>
@@ -52,6 +56,7 @@ const ContactCreate = (props) => {
                 <h1 className="heading">Create New Contact</h1>
                 <br />
                 <div className="contact_container">
+                    <p className={(inputError ? "contact-error" : "display-none")}>Provide valid details..!!</p>
                     <input type="text" className="name_editable editable" placeholder="Enter your Name" />
                     <input type="text" className="email_editable editable" placeholder="Enter your Email" />
                     <input type="text" className="mobile_editable editable" placeholder="Enter your Mobile" />

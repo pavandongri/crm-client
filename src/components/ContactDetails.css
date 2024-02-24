@@ -18,3 +18,8 @@
     justify-self: center;
     font-weight: bolder;
 }
+
+.contact-delete-message, .contact-update-message{
+    color: red;
+    font-weight: bold;
+}

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../components/Login.css'
 import axios from '../api.js';
 
 const Login = () => {
+
+  const [loginError, setLoginError] = useState(false)
 
   const tokenExpired = (token) => {
     if (!token) return true;
@@ -20,7 +22,7 @@ const Login = () => {
     return tokenData.exp < currentTime;
   }
 
-  
+
   const storedToken = localStorage.getItem('token')
 
   if (!tokenExpired(storedToken)) {
@@ -30,7 +32,7 @@ const Login = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoginError(false)
 
     const formData = new FormData(event.target);
 
@@ -43,27 +45,29 @@ const Login = () => {
         password: password
       }
     }
-    console.log('login data = ', data)
+
     try {
       const response = await axios.post('/login', JSON.stringify(data), {
         headers: {
           'Content-Type': 'application/json'
         }
       });
-      console.log('login response =', response)
+
       if (response.data.status.code == 200) {
         const token = response.headers.get("Authorization");
         localStorage.setItem('token', token);
         window.location.href = '/home'
       } else {
-        console.error("Login failed:", 401);
+        setLoginError(true)
       }
     } catch (error) {
-      console.error("Error during Login:", error);
+      setLoginError(true)
     }
   };
 
+  useEffect(() => {
 
+  }, [loginError])
 
 
   return (
@@ -73,6 +77,7 @@ const Login = () => {
       </div>
       <div className='form'>
         <form onSubmit={handleSubmit}>
+          <p className={(loginError) ? "login-error" : "display-none"}>Wrong credentials..!!</p>
           <input type="text" id="email" name="email" required placeholder='Email' />
 
           <br /><br />
