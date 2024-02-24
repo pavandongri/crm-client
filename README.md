@@ -1,3 +1,7 @@
+## This is frontend repo for CRM app:
+
+_________________________________________________________________
+
 # Local Setup:
 
 ### `git clone https://github.com/pavandongri/crm-client.git`
